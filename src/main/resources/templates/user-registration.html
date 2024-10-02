@@ -2,24 +2,24 @@
     <h2>User registration</h2>
     <form method="post" th:action="@{/user}" th:object="${user}">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="id" id="id" placeholder="" required th:value="${user.id}" disabled/>
+            <input type="text" class="form-control" placeholder="" required th:field="*{id}" readonly/>
             <label for="id">Id</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="name" id="name" placeholder="" required th:value="${user.name}" />
+            <input type="text" class="form-control" placeholder="" required th:field="*{name}"/>
             <label for="name">Name</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" name="email" id="email" placeholder="" required th:value="${user.email}" />
+            <input type="email" class="form-control" placeholder="" th:field="*{email}"/>
             <label for="email">E-mail</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" class="form-control" name="password" id="password" placeholder="" required th:value="${user.password}" />
+            <input type="password" class="form-control" placeholder="" th:required="${user.id != null} ? false : true" th:field="*{password}"/>
             <label for="password">Password</label>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" name="role" id="role" required th:value="${user.role}">
-                <option selected>Select the role</option>
+            <select class="form-select" required th:field="*{role}">
+                <option selected value="">Select the role</option>
                 <option value="ADMIN">ADMIN</option>
                 <option value="USER">USER</option>
             </select>
